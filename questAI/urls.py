@@ -9,7 +9,7 @@ import questoes.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(questoes.urls)),
+    path('questoes/', include(questoes.urls)),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

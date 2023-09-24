@@ -12,6 +12,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -57,21 +61,34 @@
             </div>
         </form>
         </div>
+
+        <div class="bg-white rounded-md shadow-md p-6 flex flex-col justify-between">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Questões geradas</h2>
+            <div id="questoes-geradas">
+                {% for questao in respostaGerada %}
+                    <p>{{ questao }}</p>
+                {% endfor %}
+                {% if erroMsg %}
+                    {{ erroMsg }}
+                {% endif %}
+            </div>
         
-    <div class="bg-white rounded-md shadow-md p-6">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Questões geradas</h2>
-        <div id="questoes-geradas">
+            <div class="flex flex-col items-center mt-4">
+        
+                <button class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-full flex items-center space-x-2 mb-2">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span>Importar .pdf</span>
+                </button>
 
-        {% for questao in respostaGerada %}
-            <p>{{ questao }}</p>
-        {% endfor %}
+                <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full flex items-center space-x-2 ">
+                    <i class="fa-solid fa-file-word"></i>
+                    <span>Importar .docx</span>
+                </button>
 
-        {% if erroMsg %}
-            {{erroMsg}}
-        {% endif %}
-
+            </div>
         </div>
-    </div>
+        
+        
 
 </body>
 

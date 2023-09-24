@@ -6,7 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "QuestAI.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "questAI.settings")
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

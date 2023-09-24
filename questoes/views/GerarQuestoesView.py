@@ -32,9 +32,10 @@ class GerarQuestoesView(View):
         response = requests.post(url, json=mensagens, headers=headers)
 
         if response.status_code == 200:
-            resposta_gerada = response.json()
-            print(resposta_gerada)
-            return JsonResponse({'resposta': resposta_gerada})
+            respostaGerada = response.json()
+            print(respostaGerada)
+            linhasQuestoes = respostaGerada.text.split('\n')
+            
+            return render(request, self.template_name, {'respostaGerada': linhasQuestoes})
         else:
-            erro_msg = f'Erro na solicitação à API do GPT-3 (status {response.status_code})'
-            return JsonResponse({'erro': erro_msg}, status=response.status_code)
+            return render(request, self.template_name, {'erroMsg': f'Erro na requisição para a API! Status: {response.status_code}'})
